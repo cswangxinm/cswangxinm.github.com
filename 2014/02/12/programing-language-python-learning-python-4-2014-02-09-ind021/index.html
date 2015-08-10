@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第二十一篇：Advanced Topics | Shane</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#####1. Unicode and Byte Strings3.0与2.0一些区别。主要介绍3.0的细节。会夹杂着2.0中的重点部分。通过内置的函数进行转换。1234#ASCIIord(&apos;a&apos;)  # 97hex(97)  # 0x61chr(97)  # a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二十一篇：Advanced Topics">
+<meta property="og:url" content="http://mllover.com/2014/02/12/programing-language-python-learning-python-4-2014-02-09-ind021/index.html">
+<meta property="og:site_name" content="Shane">
+<meta property="og:description" content="#####1. Unicode and Byte Strings3.0与2.0一些区别。主要介绍3.0的细节。会夹杂着2.0中的重点部分。通过内置的函数进行转换。1234#ASCIIord(&apos;a&apos;)  # 97hex(97)  # 0x61chr(97)  # a">
+<meta property="og:updated_time" content="2014-02-14T08:30:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二十一篇：Advanced Topics">
+<meta name="twitter:description" content="#####1. Unicode and Byte Strings3.0与2.0一些区别。主要介绍3.0的细节。会夹杂着2.0中的重点部分。通过内置的函数进行转换。1234#ASCIIord(&apos;a&apos;)  # 97hex(97)  # 0x61chr(97)  # a">
+  
+    <link rel="alternative" href="/atom.xml" title="Shane" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Shane</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://mllover.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-programing-language-python-learning-python-4-2014-02-09-ind021" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/12/programing-language-python-learning-python-4-2014-02-09-ind021/" class="article-date">
+  <time datetime="2014-02-12T14:30:18.000Z" itemprop="datePublished">Feb 12 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/lerning-python-4/">lerning python 4</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第二十一篇：Advanced Topics
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#####1. Unicode and Byte Strings<br>3.0与2.0一些区别。主要介绍3.0的细节。会夹杂着2.0中的重点部分。<br>通过内置的函数进行转换。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ASCII</span></span><br><span class="line">ord(<span class="string">'a'</span>)  <span class="comment"># 97</span></span><br><span class="line">hex(<span class="number">97</span>)  <span class="comment"># 0x61</span></span><br><span class="line">chr(<span class="number">97</span>)  <span class="comment"># a</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>通过<code>Encoding</code>和<code>Decoding</code>可以在character string 和 raw byte 中转换。</p>
+<ul>
+<li>Encoding: string of characters -&gt; raw bytes form</li>
+<li>Decoding: raw bytes form -&gt; string of characters</li>
+</ul>
+<p>python支持100多种Encoding。可以通过下面代码查看细节。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> encodings</span><br><span class="line"><span class="keyword">print</span> help(encodings)</span><br></pre></td></tr></table></figure></p>
+<p>python2.x中有两个类型：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str <span class="keyword">for</span> representing <span class="number">8</span>-bit text <span class="keyword">and</span> binary data</span><br><span class="line">unicode <span class="keyword">for</span> representing wide-character Unicode text</span><br></pre></td></tr></table></figure></p>
+<p>python3.x中有三种类型：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str <span class="keyword">for</span> representing Unicode text (both <span class="number">8</span>-bit <span class="keyword">and</span> wider)</span><br><span class="line">bytes <span class="keyword">for</span> representing binary data</span><br><span class="line">bytearray, a mutable flavor of the bytes type</span><br></pre></td></tr></table></figure></p>
+<p>bytearray也在2.6中得到支持。但是3.0种的移植。并不完美。</p>
+<p>str与bytes相互转化<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.encode() 或 bytes(S, encoding)</span><br><span class="line">bytes.decode() 或 str(B, encoding)</span><br></pre></td></tr></table></figure></p>
+<p>字符串替换(这个功能很实用)：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = str(<span class="string">'我们'</span>)</span><br><span class="line">y = x.replace(<span class="string">'我'</span>, <span class="string">'你'</span>)</span><br><span class="line"><span class="keyword">print</span> y  <span class="comment"># 你们</span></span><br></pre></td></tr></table></figure></p>
+<p>可以使用bytearray向后面添加元素：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = bytearray(<span class="string">'hello'</span>)</span><br><span class="line">x.append(<span class="string">'y'</span>)</span><br><span class="line"><span class="keyword">print</span> x</span><br></pre></td></tr></table></figure></p>
+<p>打开文件时也可以制定编码:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(<span class="string">'utf8data'</span>, <span class="string">'w'</span>, encoding=<span class="string">'utf-8'</span>).write(S)       <span class="comment"># Write as utf-8</span></span><br></pre></td></tr></table></figure></p>
+<p>r前缀可以让python忽略控制符。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="string">r'\n'</span> </span><br><span class="line"><span class="string">'\\n'</span> </span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">print</span> <span class="string">r'\n'</span> </span><br><span class="line">\n</span><br></pre></td></tr></table></figure></p>
+<p>更详细的介绍看page897。</p>
+<p>#####2. re<br><b>Pattern Matching Module</b>： python 中字符串工具<code>re</code>是一个很强大的工具，它提供对正则表达式的支持。希望能熟练掌握。这里有个简明的教程。<a href="http://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html" target="_blank" rel="external">Brief Tutorial</a><br>下面是一些例子。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="comment">#很酷的例子：</span></span><br><span class="line">S = <span class="string">'this is a test string. It is very cool'</span></span><br><span class="line"><span class="keyword">print</span> re.match(<span class="string">'(.*) a (.*). It(.*)'</span>, S).groups()</span><br><span class="line"></span><br><span class="line">result:</span><br><span class="line">(<span class="string">'this is'</span>, <span class="string">'test string'</span>, <span class="string">' is very cool'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>这里再举一个例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将filenames里面以.txt结尾且最后两个是数字的文件名中的数字加1</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">filenames = [<span class="string">'hello.txt'</span>, <span class="string">'new.py'</span>, <span class="string">'good.txt'</span>, <span class="string">'yes01.txt'</span>, <span class="string">'maybe02.txt'</span>, <span class="string">'find.doc'</span>, <span class="string">'good12.txt'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">    pattern = re.compile(<span class="string">'.*\d\d\.txt'</span>)</span><br><span class="line">    match = pattern.match(filename)</span><br><span class="line">    <span class="keyword">if</span> match:</span><br><span class="line">        <span class="keyword">print</span> match.group()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">    match = re.match(<span class="string">'(.*)(\d\d)(\.txt)'</span>, filename)</span><br><span class="line">    <span class="keyword">if</span> match:</span><br><span class="line">        x = match.groups()</span><br><span class="line">        <span class="keyword">print</span> x[<span class="number">0</span>] + <span class="string">'%02d'</span> % (int(x[<span class="number">1</span>])+<span class="number">1</span>) + x[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line">yes01.txt</span><br><span class="line">maybe02.txt</span><br><span class="line">good12.txt</span><br><span class="line">yes02.txt</span><br><span class="line">maybe03.txt</span><br><span class="line">good13.txt</span><br></pre></td></tr></table></figure></p>
+<p>#####3. struct<br>Python struct module用来从string中创建和提取packed binary data.<br>下面的例子将3个对象pack到一个str里。注意3.0中pack的是byte类型。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> struct <span class="keyword">import</span> pack</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>pack(<span class="string">'&gt;i4sh'</span>, <span class="number">7</span>, <span class="string">'spam'</span>, <span class="number">8</span>)         <span class="comment"># bytes in 3.0 (8-bit string)</span></span><br><span class="line"><span class="string">b'\x00\x00\x00\x07spam\x00\x08'</span></span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">import</span> struct</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>B = struct.pack(<span class="string">'&gt;i4sh'</span>, <span class="number">7</span>, <span class="string">'spam'</span>, <span class="number">8</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>B</span><br><span class="line"><span class="string">b'\x00\x00\x00\x07spam\x00\x08'</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>vals = struct.unpack(<span class="string">'&gt;i4sh'</span>, B)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>vals</span><br><span class="line">(<span class="number">7</span>, <span class="string">b'spam'</span>, <span class="number">8</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>vals = struct.unpack(<span class="string">'&gt;i4sh'</span>, B.decode())</span><br><span class="line">TypeError: <span class="string">'str'</span> does <span class="keyword">not</span> have the buffer interface</span><br><span class="line"></span><br><span class="line"><span class="comment">#写和读文件</span></span><br><span class="line"><span class="comment"># Write values to a packed binary file</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>F = open(<span class="string">'data.bin'</span>, <span class="string">'wb'</span>)                  <span class="comment"># Open binary output file</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">import</span> struct</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>data = struct.pack(<span class="string">'&gt;i4sh'</span>, <span class="number">7</span>, <span class="string">'spam'</span>, <span class="number">8</span>)   <span class="comment"># Create packed binary data</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>data                                        <span class="comment"># bytes in 3.0, not str</span></span><br><span class="line"><span class="string">b'\x00\x00\x00\x07spam\x00\x08'</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>F.write(data)                               <span class="comment"># Write to the file</span></span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>F.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Read values from a packed binary file</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>F = open(<span class="string">'data.bin'</span>, <span class="string">'rb'</span>)                  <span class="comment"># Open binary input file</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>data = F.read()                             <span class="comment"># Read bytes</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>data</span><br><span class="line"><span class="string">b'\x00\x00\x00\x07spam\x00\x08'</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>values = struct.unpack(<span class="string">'&gt;i4sh'</span>, data)       <span class="comment"># Extract packed binary data</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>values                                      <span class="comment"># Back to Python objects</span></span><br><span class="line">(<span class="number">7</span>, <span class="string">b'spam'</span>, <span class="number">8</span>)</span><br></pre></td></tr></table></figure></p>
+<p>#####4. pickle<br>类似地，python3.0中，pickle创建bytes对象。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C:\misc&gt; C:\Python30\python</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">import</span> pickle                          <span class="comment"># dumps() returns pickle string</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>pickle.dumps([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])                <span class="comment"># Python 3.0 default protocol=3=binary</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line"><span class="string">b'\x80\x03]q\x00(K\x01K\x02K\x03e.'</span></span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>pickle.dump([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], open(<span class="string">'temp'</span>, <span class="string">'wb'</span>))   <span class="comment"># Always use binary in 3.0</span></span><br></pre></td></tr></table></figure></p>
+<p>#####5. XML parsing Tools<br>假设一个xml语句如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">books</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>Snow<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>Blue Sky<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">year</span>&gt;</span>2011<span class="tag">&lt;/<span class="title">year</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">books</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>为了得到title里的信息，至少有4种方式。</p>
+<ol>
+<li><p>使用re包。通过pattern matching方式获得。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">my_file = <span class="string">'&lt;books&gt;\n&lt;title&gt;Snow&lt;/title&gt;\n&lt;title&gt;Blue Sky&lt;/title&gt;\n&lt;year&gt;2011&lt;/year&gt;\n&lt;/books&gt;'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">f = re.findall(<span class="string">'&lt;title&gt;(.*)&lt;/title&gt;'</span>, my_file)</span><br><span class="line"><span class="keyword">for</span> title <span class="keyword">in</span> f:</span><br><span class="line">    <span class="keyword">print</span> title</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line">Snow</span><br><span class="line">Blue Sky</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用DOM:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> xml.dom.minidom <span class="keyword">import</span> parse, Node</span><br><span class="line">xml_tree = parse(my_file.xml)  <span class="comment">#here file name!</span></span><br><span class="line"><span class="keyword">for</span> node1 <span class="keyword">in</span> xml_tree.getElementsByTagName(<span class="string">'title'</span>):</span><br><span class="line">    <span class="keyword">for</span> node2 <span class="keyword">in</span> node1.childNodes:</span><br><span class="line">        <span class="keyword">if</span> node2.nodeType == Node.TEXT_NODE:</span><br><span class="line">            <span class="keyword">print</span> node2.data</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SAX</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xml.sax.handler</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BookHandler</span><span class="params">(xml.sax.handler.ContentHandler)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.inTitle = <span class="keyword">False</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">startElement</span><span class="params">(self, name, attributes)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">'title'</span>:</span><br><span class="line">            self.inTitle = <span class="keyword">True</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">characters</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.inTitle:</span><br><span class="line">            print(data)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">endElement</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">'title'</span>:</span><br><span class="line">            self.inTitle = <span class="keyword">False</span></span><br><span class="line"><span class="keyword">import</span> xml.sax</span><br><span class="line">parser = xml.sax.make_parser()</span><br><span class="line">handler = BookHandler()</span><br><span class="line">parser.setContentHandler(handler)</span><br><span class="line">parser.parse(<span class="string">'mybooks.xml'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ElementTree system</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> xml.etree.ElementTree <span class="keyword">import</span> parse</span><br><span class="line">tree = parse(<span class="string">'mybooks.xml'</span>)</span><br><span class="line"><span class="keyword">for</span> E <span class="keyword">in</span> tree.findall(<span class="string">'title'</span>):</span><br><span class="line">    print(E.text)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>待续。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/02/12/programing-language-python-learning-python-4-2014-02-09-ind021/" data-id="cid5ozz0j0008q04daeymob90" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/02/12/programing-language-python-learning-python-4-2014-02-09-ind021/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/language/">language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning-python-4/">learning python 4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/">study</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/02/17/PRML-read-2014-02-17-ind001/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PCA
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/02/11/tools-emacs-2014-02-11-ind001/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Emacs之基本操作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shane"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Shane Wang<br>
+      <!--Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>-->
+    </div>
+  </div>
+  
+    
+    <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = '1';
+  
+  var disqus_url = 'http://mllover.com/2014/02/12/programing-language-python-learning-python-4-2014-02-09-ind021/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第十八篇：重载 | Shane</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#####1. __getitem__ and __setitem__将类模拟成按index访问。123456789101112131415161718192021222324252627class A:    def __init__(self):        self.data = &apos;A&apos;    def __getitem__(self, index):        return self">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十八篇：重载">
+<meta property="og:url" content="http://mllover.com/2014/02/09/programing-language-python-learning-python-4-2014-02-09-ind018/index.html">
+<meta property="og:site_name" content="Shane">
+<meta property="og:description" content="#####1. __getitem__ and __setitem__将类模拟成按index访问。123456789101112131415161718192021222324252627class A:    def __init__(self):        self.data = &apos;A&apos;    def __getitem__(self, index):        return self">
+<meta property="og:updated_time" content="2014-02-09T14:07:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第十八篇：重载">
+<meta name="twitter:description" content="#####1. __getitem__ and __setitem__将类模拟成按index访问。123456789101112131415161718192021222324252627class A:    def __init__(self):        self.data = &apos;A&apos;    def __getitem__(self, index):        return self">
+  
+    <link rel="alternative" href="/atom.xml" title="Shane" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Shane</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://mllover.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-programing-language-python-learning-python-4-2014-02-09-ind018" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/09/programing-language-python-learning-python-4-2014-02-09-ind018/" class="article-date">
+  <time datetime="2014-02-09T05:49:12.000Z" itemprop="datePublished">Feb 9 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/lerning-python-4/">lerning python 4</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第十八篇：重载
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#####1. <code>__getitem__</code> and <code>__setitem__</code><br>将类模拟成按index访问。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.data = <span class="string">'A'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.data[index]</span><br><span class="line"></span><br><span class="line">a = A()</span><br><span class="line">a.data = <span class="string">'hello'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">print</span> i</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> [i <span class="keyword">for</span> i <span class="keyword">in</span> a]</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> list(a)</span><br><span class="line"><span class="keyword">print</span> a[:<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line">h</span><br><span class="line">e</span><br><span class="line">l</span><br><span class="line">l</span><br><span class="line">o</span><br><span class="line">[<span class="string">'h'</span>, <span class="string">'e'</span>, <span class="string">'l'</span>, <span class="string">'l'</span>, <span class="string">'o'</span>]</span><br><span class="line">[<span class="string">'h'</span>, <span class="string">'e'</span>, <span class="string">'l'</span>, <span class="string">'l'</span>, <span class="string">'o'</span>]</span><br><span class="line">he</span><br></pre></td></tr></table></figure></p>
+<p>不要与3.0中的<code>__index__</code>混淆。将对象转换为数字字符是调用<code>__index__</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__index__</span><span class="params">(self)</span>:</span></span><br><span class="line"><span class="prompt">... </span>        <span class="keyword">return</span> <span class="number">255</span></span><br><span class="line">...</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>X = C()</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>hex(X)               <span class="comment"># Integer value</span></span><br><span class="line"><span class="string">'0xff'</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>bin(X)</span><br><span class="line"><span class="string">'0b11111111'</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>oct(X)</span><br><span class="line"><span class="string">'0o377'</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>#####2. <code>__iter__</code> and <code>__next__</code><br>python先试<code>__iter__</code>，然后再试<code>__getitem__</code>。所以尽量首先使用<code>__iter__</code>和<code>__next__</code>。<br>迭代的原理是，python首先在<code>__iter__</code>中获取迭代对象。然后调用该对象的<code>__next__</code>，直到raise <code>StopIteration</code>。<br><strong>注意在python 2.x中是<code>next</code></strong>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.begin = <span class="number">2</span></span><br><span class="line">        self.stop = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.begin &lt; self.stop:</span><br><span class="line">            self.begin += <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> self.begin ** <span class="number">2</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> StopIteration</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = A()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">print</span> i</span><br><span class="line"></span><br><span class="line">a = A()</span><br><span class="line"><span class="keyword">print</span> [i <span class="keyword">for</span> i <span class="keyword">in</span> a]</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> list(a)</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="number">25</span></span><br><span class="line"><span class="number">36</span></span><br><span class="line"><span class="number">49</span></span><br><span class="line"><span class="number">64</span></span><br><span class="line"><span class="number">81</span></span><br><span class="line"><span class="number">100</span></span><br><span class="line">[<span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>, <span class="number">36</span>, <span class="number">49</span>, <span class="number">64</span>, <span class="number">81</span>, <span class="number">100</span>]</span><br><span class="line">[] <span class="comment">#注意这里是空的。iter只能使用一次。下一次使用要重新实例化。</span></span><br></pre></td></tr></table></figure></p>
+<p>但是这个实现有个问题，结果并不是我们想要的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> a:</span><br><span class="line">        <span class="keyword">print</span> i, j</span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line"><span class="number">9</span> <span class="number">16</span></span><br><span class="line"><span class="number">9</span> <span class="number">25</span></span><br><span class="line"><span class="number">9</span> <span class="number">36</span></span><br><span class="line"><span class="number">9</span> <span class="number">49</span></span><br><span class="line"><span class="number">9</span> <span class="number">64</span></span><br><span class="line"><span class="number">9</span> <span class="number">81</span></span><br><span class="line"><span class="number">9</span> <span class="number">100</span></span><br></pre></td></tr></table></figure></p>
+<p>改进的方法是在<code>__iter__</code>里返回一个新的实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> A()</span><br></pre></td></tr></table></figure></p>
+<p>还要注意的是<code>__iter__</code>不支持slice。需要是用<code>__getitem__</code>。</p>
+<p>#####3. <code>__contains__</code><br>用在<code>in</code>语句中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.data = <span class="string">'hello'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__contains__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> item <span class="keyword">in</span> self.data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b = B()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'y'</span> <span class="keyword">in</span> b</span><br></pre></td></tr></table></figure></p>
+<p>#####4. <code>__getattr__</code> and <code>__setattr__</code><br>当我们尝试调用对象没有的attribute name时，python会调用<code>__getattr__</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> item == <span class="string">'name'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'shane'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">c = C()</span><br><span class="line"><span class="keyword">print</span> c.name</span><br></pre></td></tr></table></figure></p>
+<p>这项技术的强大之处在于它可以让我们动态添加属性。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> item == <span class="string">'name'</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'enter getattr'</span></span><br><span class="line">            self.name = <span class="string">'shane'</span></span><br><span class="line">			<span class="comment">#or</span></span><br><span class="line">			<span class="comment">#self.__dict__['name'] = 'shane'</span></span><br><span class="line">            <span class="keyword">return</span> self.name</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> AttributeError, item</span><br><span class="line"></span><br><span class="line">c = C()</span><br><span class="line"><span class="keyword">print</span> c.name</span><br><span class="line"><span class="keyword">print</span> c.name</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line">enter getattr <span class="comment">#只进入一次</span></span><br><span class="line">shane</span><br><span class="line">shane</span><br></pre></td></tr></table></figure></p>
+<p>更含蓄一点的形式是使用<code>exec</code>函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> item == <span class="string">'name'</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'enter getattr'</span></span><br><span class="line">            exec(<span class="string">'self.%s = "shane"'</span> % item)</span><br><span class="line">            <span class="keyword">return</span> self.name</span><br></pre></td></tr></table></figure></p>
+<p>对于<code>__setattr__</code>也是如此，这里就不详细介绍。<br>还要注意区分<code>__getattribute__</code>方法。这个方法拦截所有的方法，不仅仅是没有定义的那些方法。同样还有<code>__get__</code>和<code>__set__</code>方法。我们也要留意。后两种方法将在以后将到。</p>
+<p>模拟privacy。当然下面的是一个很简单的模拟。以后还要介绍更复杂的模拟方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrivateExc</span><span class="params">(Exception)</span>:</span> <span class="keyword">pass</span>                   <span class="comment"># More on exceptions later</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Privacy</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, attrname, value)</span>:</span>         <span class="comment"># On self.attrname = value</span></span><br><span class="line">        <span class="keyword">if</span> attrname <span class="keyword">in</span> self.privates:</span><br><span class="line">            <span class="keyword">raise</span> PrivateExc(attrname, self)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.__dict__[attrname] = value         <span class="comment"># self.attrname = value loops!</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test1</span><span class="params">(Privacy)</span>:</span></span><br><span class="line">    privates = [<span class="string">'age'</span>]</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test2</span><span class="params">(Privacy)</span>:</span></span><br><span class="line">    privates = [<span class="string">'name'</span>, <span class="string">'pay'</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__dict__[<span class="string">'name'</span>] = <span class="string">'Tom'</span></span><br><span class="line">x = Test1()</span><br><span class="line">y = Test2()</span><br><span class="line">x.name = <span class="string">'Bob'</span></span><br><span class="line">y.name = <span class="string">'Sue'</span>                                      <span class="comment"># Fails</span></span><br><span class="line">y.age  = <span class="number">30</span></span><br><span class="line">x.age  = <span class="number">40</span>                                         <span class="comment"># Fails</span></span><br></pre></td></tr></table></figure></p>
+<p>#####5. <code>__repr__</code> and <code>__str__</code><br>上述两种方法，在对象转换为string时被调用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">E</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.data = <span class="string">'hello'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.data</span><br><span class="line"></span><br><span class="line">e = E()</span><br><span class="line"><span class="keyword">print</span> e, str(e), repr(e)</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line">hello hello hello</span><br></pre></td></tr></table></figure></p>
+<p>两者的区别：</p>
+<ul>
+<li><code>__str__</code>：print和str 首先会寻找给方法。它通常返回用户友好界面。</li>
+<li><code>__repr__</code>： 其它情形使用这个方法。面向开发人员的更详细的信息。<br>两者不是等价的。有的方法没有发现<code>__repr__</code>，不会尝试调用<code>__str__</code>。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">addstr</span><span class="params">(adder)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span>                       <span class="comment"># __str__ but no __repr__</span></span><br><span class="line"><span class="prompt">... </span>        <span class="keyword">return</span> <span class="string">'[Value: %s]'</span> % self.data     <span class="comment"># Convert to nice string</span></span><br><span class="line">...</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>x = addstr(<span class="number">3</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>x + <span class="number">1</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>x                                            <span class="comment"># Default __repr__</span></span><br><span class="line">&lt;__main__.addstr object at <span class="number">0x00B35EF0</span>&gt;</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>print(x)                                     <span class="comment"># Runs __str__</span></span><br><span class="line">[Value: <span class="number">4</span>]</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>str(x), repr(x)</span><br><span class="line">(<span class="string">'[Value: 4]'</span>, <span class="string">'&lt;__main__.addstr object at 0x00B35EF0&gt;'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>#####6. <code>__add__</code>, <code>__radd__</code> and <code>__iadd__</code><br><code>__radd__</code> 表示对象在加号右边。<br><code>__add__</code> 表示对象在加号左边。<br><code>__iadd__</code> 表示<code>+=</code>。</p>
+<p>同理减，乘，除。</p>
+<p>#####7. <code>__call__</code><br><code>__call__</code>在对象当做函数被调用时用到。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">F</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> kwargs[<span class="string">'parm1'</span>]</span><br><span class="line"></span><br><span class="line">f = F()</span><br><span class="line">f(parm1=<span class="string">'test'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>#####8. Comparisons<br><code>__lt__</code>, <code>__gt__</code>等等是比较大小的重载符。这里不再详细讲。python 2.6使用的是<code>__cmp__</code>，不过道理一样。</p>
+<p>#####9. <code>__bool__</code> and <code>__len__</code><br>前者模拟bool变量，后者模拟。比较简单，直接上例子。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># __bool__</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Truth</span>:</span></span><br><span class="line"><span class="prompt">... </span>   <span class="function"><span class="keyword">def</span> <span class="title">__bool__</span><span class="params">(self)</span>:</span> <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">...</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>X = Truth()</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">if</span> X: print(<span class="string">'yes!'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># __len__</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">G</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">10</span></span><br><span class="line"></span><br><span class="line">g = G()</span><br><span class="line"><span class="keyword">print</span> len(g)</span><br></pre></td></tr></table></figure></p>
+<p>#####10. <code>__del__</code><br>当对象被回收时，<code>__del__</code>被调用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">H</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'good by'</span></span><br><span class="line"></span><br><span class="line">h = H()</span><br><span class="line"><span class="keyword">del</span>(h)</span><br></pre></td></tr></table></figure></p>
+<p>#####11. 命名规范<br>使用<code>_</code>前缀表示不想被改变。<br>使用<code>__</code>前缀表示想隐藏成员。会被自动解释为：<code>_类名__变量名</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">I</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__x = <span class="number">10</span> <span class="comment">#类对象无法访问, 但可以通过_I__x访问到。</span></span><br><span class="line">        self._I__y = <span class="number">20</span> <span class="comment">#同上</span></span><br><span class="line"></span><br><span class="line">i = I()</span><br><span class="line"><span class="keyword">print</span> i.__dict__</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line">&#123;<span class="string">'_I__y'</span>: <span class="number">20</span>, <span class="string">'_I__x'</span>: <span class="number">10</span>&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/02/09/programing-language-python-learning-python-4-2014-02-09-ind018/" data-id="cid5ozz0q000vq04dpoqwpbc2" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/02/09/programing-language-python-learning-python-4-2014-02-09-ind018/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/language/">language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning-python-4/">learning python 4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/">study</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/02/09/gallery-2014-02-09-snow/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          校园雪景
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/02/02/programing-language-python-learning-python-4-2014-02-02-ind017/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第十七篇：Class</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shane"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Shane Wang<br>
+      <!--Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>-->
+    </div>
+  </div>
+  
+    
+    <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = '1';
+  
+  var disqus_url = 'http://mllover.com/2014/02/09/programing-language-python-learning-python-4-2014-02-09-ind018/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第十五篇：函数 | Shane</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#####1.def
+
+函数的关键字是def。def可以出现在if, while 这些语句内。当Python检查到def时，它创建一个函数对象。并使def中的函数名指向这个对象。
+lambda 创建一个无名函数对象。
+return 表示函数返回。
+yield 抛出一个返回值。但是不退出函数。
+global 默认变量是local的。使用global，可以是变量属于全局的。
+nonlocal 3.0引">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十五篇：函数">
+<meta property="og:url" content="http://mllover.com/2014/01/27/programing-language-python-learning-python-4-2014-01-27-ind015/index.html">
+<meta property="og:site_name" content="Shane">
+<meta property="og:description" content="#####1.def
+
+函数的关键字是def。def可以出现在if, while 这些语句内。当Python检查到def时，它创建一个函数对象。并使def中的函数名指向这个对象。
+lambda 创建一个无名函数对象。
+return 表示函数返回。
+yield 抛出一个返回值。但是不退出函数。
+global 默认变量是local的。使用global，可以是变量属于全局的。
+nonlocal 3.0引">
+<meta property="og:updated_time" content="2014-02-09T03:23:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第十五篇：函数">
+<meta name="twitter:description" content="#####1.def
+
+函数的关键字是def。def可以出现在if, while 这些语句内。当Python检查到def时，它创建一个函数对象。并使def中的函数名指向这个对象。
+lambda 创建一个无名函数对象。
+return 表示函数返回。
+yield 抛出一个返回值。但是不退出函数。
+global 默认变量是local的。使用global，可以是变量属于全局的。
+nonlocal 3.0引">
+  
+    <link rel="alternative" href="/atom.xml" title="Shane" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Shane</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://mllover.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-programing-language-python-learning-python-4-2014-01-27-ind015" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/27/programing-language-python-learning-python-4-2014-01-27-ind015/" class="article-date">
+  <time datetime="2014-01-27T13:05:42.000Z" itemprop="datePublished">Jan 27 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/lerning-python-4/">lerning python 4</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第十五篇：函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#####1.def</p>
+<ul>
+<li>函数的关键字是<code>def</code>。def可以出现在if, while 这些语句内。当Python检查到def时，它创建一个函数对象。并使def中的函数名指向这个对象。</li>
+<li><code>lambda</code> 创建一个无名函数对象。</li>
+<li><code>return</code> 表示函数返回。</li>
+<li><code>yield</code> 抛出一个返回值。但是不退出函数。</li>
+<li><code>global</code> 默认变量是local的。使用global，可以是变量属于全局的。</li>
+<li><code>nonlocal</code> 3.0引入的类似于global的标识符。<a id="more"></a>
+</li>
+</ul>
+<p>#####2.function举例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    x = <span class="number">12</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'func:'</span>, x</span><br><span class="line"></span><br><span class="line">func()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'main'</span>, x</span><br><span class="line"></span><br><span class="line"><span class="comment">#result：</span></span><br><span class="line">func: <span class="number">12</span></span><br><span class="line">main <span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<p>但是使用global后。结果就不一样了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> x</span><br><span class="line">    x = <span class="number">12</span></span><br><span class="line">    x = x + <span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'func:'</span>, x</span><br><span class="line"></span><br><span class="line">func()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'main'</span>, x</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line">func: <span class="number">13</span></span><br><span class="line">main <span class="number">13</span></span><br></pre></td></tr></table></figure></p>
+<p>#####3. Nonlocal<br>nonlocal指函数内调用父函数的变量。它只能在函数内追溯。不能搜索模块集和build-in 函数。Nonlocal适用于python 3.0。 Nonlocal用法举例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">tester</span><span class="params">(start)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    state = start             <span class="comment"># Each call gets its own state</span></span><br><span class="line"><span class="prompt">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">nested</span><span class="params">(label)</span>:</span></span><br><span class="line"><span class="prompt">... </span>        <span class="keyword">nonlocal</span> state        <span class="comment"># Remembers state in enclosing scope</span></span><br><span class="line"><span class="prompt">... </span>        print(label, state)</span><br><span class="line"><span class="prompt">... </span>        state += <span class="number">1</span>            <span class="comment"># Allowed to change it if nonlocal</span></span><br><span class="line"><span class="prompt">... </span>    <span class="keyword">return</span> nested</span><br><span class="line">...</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>F = tester(<span class="number">0</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>F(<span class="string">'spam'</span>)                     <span class="comment"># Increments state on each call</span></span><br><span class="line">spam <span class="number">0</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>F(<span class="string">'ham'</span>)</span><br><span class="line">ham <span class="number">1</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>F(<span class="string">'eggs'</span>)</span><br><span class="line">eggs <span class="number">2</span></span><br></pre></td></tr></table></figure></p>
+<p>Nonlocal可以使用类机制来模拟：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">tester</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, start)</span>:</span></span><br><span class="line"><span class="prompt">... </span>        self.state = start</span><br><span class="line"><span class="prompt">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, label)</span>:</span>         <span class="comment"># Intercept direct instance calls</span></span><br><span class="line"><span class="prompt">... </span>        print(label, self.state)       <span class="comment"># So .nested() not required</span></span><br><span class="line"><span class="prompt">... </span>        self.state += <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>H = tester(<span class="number">99</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>H(<span class="string">'juice'</span>)                             <span class="comment"># Invokes __call__</span></span><br><span class="line">juice <span class="number">99</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>H(<span class="string">'pancakes'</span>)</span><br><span class="line">pancakes <span class="number">100</span></span><br></pre></td></tr></table></figure></p>
+<p>#####4. 参数传递<br>参数传递的规则：</p>
+<ul>
+<li>自动赋值到local变量名</li>
+<li>函数中改变参数名不影响caller</li>
+<li>改变参数内容可能影响到caller</li>
+</ul>
+<p>参数传递的原则是：</p>
+<ul>
+<li>Immutable(如：integers, strings.你不能修改它们) 参数按值传递</li>
+<li>Mutable 参数按引用传递</li>
+</ul>
+<p>如果不想按引用传递。可以传递一个拷贝。比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">changer(X, L[:])</span><br></pre></td></tr></table></figure></p>
+<p>#####5. 参数传递方法</p>
+<table border="1"><br><tr><br>    <td>语法</td><br>    <td>解释</td><br></tr><br><tr><br>    <td>def func(value)</td><br>    <td>一般定义方法</td><br></tr><br><tr><br>    <td>def func(name=value)</td><br>    <td>default赋值</td><br></tr><br><tr><br>    <td>def func(*name)</td><br>    <td>匹配一组参数</td><br></tr><br><tr><br>    <td>def func(**name)</td><br>    <td>匹配带key的参数</td><br></tr><br><tr><br>    <td>def func(*args, name)<br>def func(*, name=value)</td><br>    <td>(3.0) 必须使用keyword传递</td><br></tr><br></table>
+
+<p>参数必须要如下的次序出现：</p>
+<ul>
+<li>normal or positional arguments(value/name)</li>
+<li>name=value</li>
+<li>*sequence</li>
+<li>**dict</li>
+</ul>
+<p>调用实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>func(<span class="number">1</span>, *(<span class="number">2</span>, <span class="number">3</span>), d=<span class="number">4</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>f(<span class="number">1</span>, *(<span class="number">2</span>,), c=<span class="number">3</span>, **&#123;<span class="string">'d'</span>:<span class="number">4</span>&#125;)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span></span><br></pre></td></tr></table></figure></p>
+<p>#####6. python3.0 中的 keyword-only 赋值<br>它是指出现在*args 后的所有变量可以通过keyword来赋值。从而避免有些参数全部被*args 吞掉。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#example 1:</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">kwonly</span><span class="params">(a, *b, c)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    print(a, b, c)</span><br><span class="line">...</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>kwonly(<span class="number">1</span>, <span class="number">2</span>, c=<span class="number">3</span>)</span><br><span class="line"><span class="number">1</span> (<span class="number">2</span>,) <span class="number">3</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>kwonly(a=<span class="number">1</span>, c=<span class="number">3</span>)</span><br><span class="line"><span class="number">1</span> () <span class="number">3</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>kwonly(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">TypeError: kwonly() needs keyword-only argument</span><br><span class="line"></span><br><span class="line"><span class="comment">#example 2:</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">kwonly</span><span class="params">(a, *, b, c)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    print(a, b, c)</span><br><span class="line">...</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>kwonly(<span class="number">1</span>, c=<span class="number">3</span>, b=<span class="number">2</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>kwonly(c=<span class="number">3</span>, b=<span class="number">2</span>, a=<span class="number">1</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>kwonly(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">TypeError: kwonly() takes exactly <span class="number">1</span> positional argument (<span class="number">3</span> given)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>kwonly(<span class="number">1</span>)</span><br><span class="line">TypeError: kwonly() needs keyword-only argument b</span><br></pre></td></tr></table></figure></p>
+<p>#####7. Recursive Functions<br>下面是递归函数的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mysum</span><span class="params">(L)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> L:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> L[<span class="number">0</span>] + mysum(L[<span class="number">1</span>:])</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> mysum([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#上面的代码与下面的等价</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mysum2</span><span class="params">(L)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> <span class="keyword">not</span> L <span class="keyword">else</span> L[<span class="number">0</span>] + mysum(L[<span class="number">1</span>:])</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> mysum2([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br></pre></td></tr></table></figure></p>
+<p>#####8. list多层嵌套的遍历。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myadd</span><span class="params">(L)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> L:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> dir(L[<span class="number">0</span>]) == dir([]):</span><br><span class="line">        <span class="keyword">return</span> myadd(L[<span class="number">0</span>]) + myadd(L[<span class="number">1</span>:])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> L[<span class="number">0</span>] + myadd(L[<span class="number">1</span>:])</span><br><span class="line">		</span><br><span class="line"><span class="keyword">print</span> myadd([<span class="number">2</span>,<span class="number">3</span>, [<span class="number">4</span>, <span class="number">6</span>], [<span class="number">3</span>, [<span class="number">3</span>, [<span class="number">4</span>, <span class="number">6</span>]]]])</span><br></pre></td></tr></table></figure></p>
+<p>#####9. Function Object<br>函数对象可以赋值，也可以作为参数传入函数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">echo</span><span class="params">(message)</span>:</span></span><br><span class="line">    <span class="keyword">print</span> message</span><br><span class="line"></span><br><span class="line">echo(<span class="string">'hello'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#Assign another name:</span></span><br><span class="line">another_echo = echo</span><br><span class="line">another_echo(<span class="string">'world'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myexec</span><span class="params">(echo, args)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> echo(args)</span><br><span class="line"></span><br><span class="line">myexec(echo, <span class="string">'hello, world'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>#####10. 除了调用外函数还有其它的一些属性。比如：</p>
+<ul>
+<li><code>func.__code__</code> : code ojbect</li>
+<li><code>dir(func.__code__)</code> : 查看code object</li>
+<li><code>func.__code__.co_varnames</code> : 查看局部变量。</li>
+</ul>
+<p>在写一些工具时，这些都很有用。</p>
+<p>#####11. Function Attributes<br>函数也可以attach属性。比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a)</span>:</span></span><br><span class="line">    b = <span class="string">'spam'</span></span><br><span class="line">    <span class="keyword">return</span> b * a</span><br><span class="line"></span><br><span class="line">func.count = <span class="number">0</span></span><br><span class="line">func.handles = <span class="string">'Button Press'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> dir(func)</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line"></span><br><span class="line">[<span class="string">'__call__'</span>, <span class="string">'__class__'</span>, <span class="string">'__closure__'</span>, <span class="string">'__code__'</span>, <span class="string">'__defaults__'</span>, <span class="string">'__delattr__'</span>, </span><br><span class="line"> <span class="string">'__dict__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__format__'</span>, <span class="string">'__get__'</span>, <span class="string">'__getattribute__'</span>, <span class="string">'__globals__'</span>, <span class="string">'__hash__'</span>, </span><br><span class="line"> <span class="string">'__init__'</span>, <span class="string">'__module__'</span>, <span class="string">'__name__'</span>, <span class="string">'__new__'</span>, <span class="string">'__reduce__'</span>, <span class="string">'__reduce_ex__'</span>, <span class="string">'__repr__'</span>, </span><br><span class="line"> <span class="string">'__setattr__'</span>, <span class="string">'__sizeof__'</span>, <span class="string">'__str__'</span>, <span class="string">'__subclasshook__'</span>, <span class="string">'count'</span>, <span class="string">'func_closure'</span>, </span><br><span class="line"> <span class="string">'func_code'</span>, <span class="string">'func_defaults'</span>, <span class="string">'func_dict'</span>, <span class="string">'func_doc'</span>, <span class="string">'func_globals'</span>, <span class="string">'func_name'</span>, <span class="string">'handles'</span>]</span><br></pre></td></tr></table></figure></p>
+<p>通过这种机制，我们可以绑定一些state information。</p>
+<p>#####12. Function Annotations in 3.0<br>在3.0中引入了函数注解机制。比如：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def func(a: 'spam', b: (1,10), c: float) -&gt; int: #对参数和返回值都作了注解。</span><br><span class="line">	return a + b + c</span><br><span class="line"></span><br><span class="line">func.__annotations__ #查看</span><br><span class="line"></span><br><span class="line">#有注解又有默认值</span><br><span class="line">&gt;&gt;&gt; def func(a: 'spam' = 4, b: (1, 10) = 5, c: float = 6) -&gt; int:</span><br><span class="line">...     return a + b + c</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; func(1, 2, 3)</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt; func()                       # 4 + 5 + 6   (all defaults)</span><br><span class="line">15</span><br><span class="line">&gt;&gt;&gt; func(1, c=10)                # 1 + 5 + 10  (keywords work normally)</span><br><span class="line">16</span><br><span class="line">&gt;&gt;&gt; func.__annotations__</span><br><span class="line">&#123;'a': 'spam', 'c': &lt;class 'float'&gt;, 'b': (1, 10), 'return': &lt;class 'int'&gt;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Annotations 只对以def声明的函数表示中生效。对于lambda无效。</p>
+<p>#####13. Lambda<br>lambda是表达式而不是statement. lambda的body只能是简单的表述，而不能潜入statements(如if, while 等)。lambda表达式可以使得一些即时使用的函数的定义变得更加方便。比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func_dic = &#123;max: <span class="keyword">lambda</span> x, y: max(x,y), min: <span class="keyword">lambda</span> x, y: min(x, y)&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> func_dic[max](<span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">print</span> func_dic[min](<span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>lambda函数也可以嵌套。</p>
+<p>#####14. map函数<br>map用来将函数与变量绑定。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>pow(<span class="number">3</span>, <span class="number">4</span>)                             <span class="comment"># 3**4</span></span><br><span class="line"><span class="number">81</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>list(map(pow, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]))  <span class="comment"># 1**2, 2**3, 3**4</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">8</span>, <span class="number">81</span>]</span><br></pre></td></tr></table></figure></p>
+<p>#####15. filter 和 reduce<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># fileter example:</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>pow(<span class="number">3</span>, <span class="number">4</span>)                             <span class="comment"># 3**4</span></span><br><span class="line"><span class="number">81</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>list(map(pow, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]))  <span class="comment"># 1**2, 2**3, 3**4</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">8</span>, <span class="number">81</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#reduce example:</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> functools <span class="keyword">import</span> reduce      <span class="comment"># Import in 3.0, not in 2.6</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>reduce((<span class="keyword">lambda</span> x, y: x + y), [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>reduce((<span class="keyword">lambda</span> x, y: x * y), [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="number">24</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#也可以使用内置的tools:</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">import</span> operator, functools</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>functools.reduce(operator.add, [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>])        <span class="comment"># Function-based +</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>functools.reduce((<span class="keyword">lambda</span> x, y: x + y), [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>])</span><br><span class="line"><span class="number">12</span></span><br></pre></td></tr></table></figure></p>
+<p>#####16. generator function<br>yield值后还能继续运行的函数。对于object而言，enerator一般返回<strong>next</strong>方法或StopIteration。而对于函数而言，需要使用<code>yield</code>关键字。下面是一个例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gensquares</span><span class="params">(N)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(N):</span><br><span class="line">        <span class="keyword">yield</span> i ** <span class="number">2</span></span><br><span class="line"></span><br><span class="line">x = gensquares(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> x:</span><br><span class="line">    <span class="keyword">print</span> i</span><br><span class="line">    </span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure></p>
+<p>#####17. 使用send<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        x = <span class="keyword">yield</span> i</span><br><span class="line">        print(x)</span><br><span class="line"></span><br><span class="line">G = gen()</span><br><span class="line">next(G)</span><br><span class="line"></span><br><span class="line">G.send(<span class="number">77</span>)</span><br><span class="line">G.send(<span class="number">88</span>)</span><br><span class="line">next(G)</span><br></pre></td></tr></table></figure></p>
+<p>#####18. Generator Expressions<br>用括号而不是用方括号括起来。称为Generator Expressions. 它和list comprehension不同。它返回的是一个迭代器。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">G = (x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">4</span>))</span><br><span class="line">next(G)</span><br><span class="line">next(G)</span><br><span class="line">next(G)</span><br><span class="line">next(G)</span><br></pre></td></tr></table></figure></p>
+<p>它与<code>[x**2 for x in rangeJ(4)]</code> 不同点是，它一次返回所有元素。这些元素都被放到了内存中。而generator expression只会返回一个迭代器对象。如果结合相关函数，括号不是必须的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sum(x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">4</span>))</span><br></pre></td></tr></table></figure></p>
+<p>#####19. for、iter、comprehension等效率测试：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">reps = <span class="number">1000</span></span><br><span class="line">repslist = range(reps)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timer</span><span class="params">(func, *pargs, **kargs)</span>:</span></span><br><span class="line">    start = time.clock()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> repslist:</span><br><span class="line">        ret = func(*pargs, **kargs)</span><br><span class="line"></span><br><span class="line">    elapsed = time.clock() - start</span><br><span class="line">    <span class="keyword">return</span> (elapsed, ret)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">forLoop</span><span class="params">()</span>:</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> repslist:</span><br><span class="line">        res.append(abs(x))</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">listComp</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span>[abs(x) <span class="keyword">for</span> x <span class="keyword">in</span> repslist]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mapCall</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> list(map(abs, repslist))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">genExpr</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> list(abs(x) <span class="keyword">for</span> x <span class="keyword">in</span> repslist)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">genFunc</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> repslist:</span><br><span class="line">            <span class="keyword">yield</span> abs(x)</span><br><span class="line">    <span class="keyword">return</span> list(gen())</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> test <span class="keyword">in</span> (forLoop, listComp, mapCall, genExpr, genFunc):</span><br><span class="line">    elapsed, result = timer(test)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'-'</span>*<span class="number">33</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'%-9s: %.5f =&gt; [%s...%s]'</span> % (test.__name__, elapsed, result[<span class="number">0</span>], result[-<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">result:</span><br><span class="line"></span><br><span class="line">---------------------------------</span><br><span class="line">forLoop  : <span class="number">0.48677</span> =&gt; [<span class="number">0.</span>.<span class="number">.999</span>]</span><br><span class="line">---------------------------------</span><br><span class="line">listComp : <span class="number">0.25214</span> =&gt; [<span class="number">0.</span>.<span class="number">.999</span>]</span><br><span class="line">---------------------------------</span><br><span class="line">mapCall  : <span class="number">0.13289</span> =&gt; [<span class="number">0.</span>.<span class="number">.999</span>]</span><br><span class="line">---------------------------------</span><br><span class="line">genExpr  : <span class="number">0.22189</span> =&gt; [<span class="number">0.</span>.<span class="number">.999</span>]</span><br><span class="line">---------------------------------</span><br><span class="line">genFunc  : <span class="number">0.20076</span> =&gt; [<span class="number">0.</span>.<span class="number">.999</span>]</span><br></pre></td></tr></table></figure></p>
+<p>#####20. Default value<br>当def运行后，每个默认值都被作为一个属性连接到函数中。下面是一个例子。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">saver</span><span class="params">(x=[])</span>:</span></span><br><span class="line">    x.append(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">print</span> x</span><br><span class="line"></span><br><span class="line">saver([<span class="number">2</span>])</span><br><span class="line">saver()</span><br><span class="line">saver()</span><br><span class="line">saver()</span><br><span class="line"></span><br><span class="line"><span class="comment">#result:</span></span><br><span class="line">[<span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure></p>
+<p>#####21. nonlocal<br>如果要让函数内部函数修改这个函数的变量。需要nonlocal声明。（适用于3.0）。比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#访问是可疑的</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">()</span>:</span></span><br><span class="line">    x = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">print</span> locals()</span><br><span class="line">        y = x + <span class="number">1</span></span><br><span class="line">        <span class="keyword">print</span> locals()</span><br><span class="line">        <span class="keyword">print</span> x, y</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">a()()</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改不可以</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">()</span>:</span></span><br><span class="line">  x = <span class="number">0</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> locals()</span><br><span class="line">    y = x + <span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> locals()</span><br><span class="line">    x = <span class="number">1</span> <span class="comment">#错误</span></span><br><span class="line">    <span class="keyword">print</span> x, y</span><br><span class="line">  <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">a()()</span><br></pre></td></tr></table></figure></p>
+<p>为了解决这个问题。在2.x中只能使用全局变量。而在3.0中可以使用nonlocal来修改父函数变量：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">()</span>:</span></span><br><span class="line">  x = <span class="number">0</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">nonlocal</span> x</span><br><span class="line">    x += <span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> x</span><br><span class="line">  <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">a()()</span><br></pre></td></tr></table></figure></p>
+<p><span style="background-color:yellow">locals()返回一个字典。返回当前域内的变量和数值</span></p>
+<p>#####22. docstring一般使用”””而不是’’’。 也可以使用”xxx”。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/01/27/programing-language-python-learning-python-4-2014-01-27-ind015/" data-id="cid5ozz0w0018q04drz7rjmyv" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/01/27/programing-language-python-learning-python-4-2014-01-27-ind015/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/language/">language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning-python-4/">learning python 4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/">study</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/02/02/programing-language-python-learning-python-4-2014-02-02-ind017/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第十七篇：Class
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/01/27/programing-language-python-learning-python-4-2014-01-27-ind014/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第十四篇：Iterations and Comprehensions</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shane"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Shane Wang<br>
+      <!--Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>-->
+    </div>
+  </div>
+  
+    
+    <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = '1';
+  
+  var disqus_url = 'http://mllover.com/2014/01/27/programing-language-python-learning-python-4-2014-01-27-ind015/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>

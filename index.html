@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Shane</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shane">
+<meta property="og:url" content="http://mllover.com/index.html">
+<meta property="og:site_name" content="Shane">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shane">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="Shane" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Shane</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://mllover.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-programing-language-python-learning-python-4-2014-01-29-ind016" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/10/programing-language-python-learning-python-4-2014-01-29-ind016/" class="article-date">
+  <time datetime="2015-08-10T08:42:20.000Z" itemprop="datePublished">Aug 10 2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: ‘第十六篇： Modules’<br>date: 2014-01-29 12:54:52<br>tags:</p>
+<ul>
+<li>language</li>
+<li>python</li>
+<li>study</li>
+<li>learning python 4<br>categories: lerning python 4</li>
+</ul>
+<hr>
+<p>#####1. Import, from<br>当import时，python会自动执行import的程序。模块导入的过程：</p>
+<ol>
+<li>Find the module’s file.</li>
+<li>Compile it to byte code.</li>
+<li>Run the module’s code to build the objects it defines.</li>
+</ol>
+<p>注意上面的过程只在第一次导入时发生。以后导入后，python仅仅在内存中寻找对应的模块。python将所有模块保存在一个表中：<code>sys.modules</code>。导入模块时，python会检查该模块是不是在其中。如果不在其中，会发生上面的3个步骤。在编译模块之前，python检查文件的时间戳。如果.pyc文件不比源文件的.py文件老，则会忽略第二步。还有一点要注意的是，import会忽略导入模块的路径名。为了区别导入时的运行行为和作为主文件运行的运行行为。可以使用<code>__name__</code> 和 <code>__main__</code> 来限定。<br>
+        
+          <p class="article-more-link">
+            <a href="/2015/08/10/programing-language-python-learning-python-4-2014-01-29-ind016/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2015/08/10/programing-language-python-learning-python-4-2014-01-29-ind016/" data-id="cid5ozz0u0017q04dkcd8lv2y" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2015/08/10/programing-language-python-learning-python-4-2014-01-29-ind016/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/10/hello-world/" class="article-date">
+  <time datetime="2015-08-10T08:40:59.000Z" itemprop="datePublished">Aug 10 2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/10/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2015/08/10/hello-world/" data-id="cid5ozz3f004cq04doh7o7ush" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2015/08/10/hello-world/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-machine-learning-集成学习的常见三中方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/02/machine-learning-集成学习的常见三中方法/" class="article-date">
+  <time datetime="2014-03-02T12:30:10.000Z" itemprop="datePublished">Mar 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/machine-learning/">machine_learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/02/machine-learning-集成学习的常见三中方法/">集成学习的三中方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1 <strong>Bagging</strong> (Boostrap Aggregation)</p>
+<p>通过叠加训练出多个分类器来降低判别误差方差。<br>2 <strong>Boosting</strong></p>
+<p>通过调整样本权重生成多个分类器进行判别。</p>
+<p>3 <strong>Stacking</strong></p>
+<p>首先使用不同的算法学习原始数据，得到第一层分类器（first-level individual learners). 然后将第一层分类器输入到第二层分类器(meta-learner)再进行分类。<br><strong>参考</strong><br><a href="http://stats.stackexchange.com/questions/18891/bagging-boosting-and-stacking-in-machine-learning" target="_blank" rel="external">1. stack exchange</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/03/02/machine-learning-集成学习的常见三中方法/" data-id="cid5ozz3d0047q04dfv65dpvd" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/03/02/machine-learning-集成学习的常见三中方法/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ensemble-learning/">ensemble_learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-poem-2014-02-20-残网" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/20/poem-2014-02-20-残网/" class="article-date">
+  <time datetime="2014-02-20T04:51:23.000Z" itemprop="datePublished">Feb 20 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/poem/">poem</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/20/poem-2014-02-20-残网/">残网</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>眼前此相，心中那相。<br>此相那相此起彼伏，相互连接结伴。<br>构成万象之网，深不见底。<br>我们如昆虫，<br>粘在这网上，难以自拔。<br>感受网中传来的悸动，<br>我们所有言行都是挣扎。<br>所有自以为是的天才都是傻瓜。<br>被噬净的躯壳，<br>风吹即成沙，<br>雨打即化。</p>
+<p>By Shane</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/02/20/poem-2014-02-20-残网/" data-id="cid5ozz38003vq04dcxolhyou" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/02/20/poem-2014-02-20-残网/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/poem/">poem</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-poem-2014-02-20-舍为" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/20/poem-2014-02-20-舍为/" class="article-date">
+  <time datetime="2014-02-20T04:30:00.000Z" itemprop="datePublished">Feb 20 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/poem/">poem</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/20/poem-2014-02-20-舍为/">舍为</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>“你学佛来干什么？”<br>“求解脱”<br>“解脱什么？”<br>“解脱我的心”<br>“本来没有你相，哪来的你的心呢？”<br>“那这心从何来，为何而去？”<br>“心本无来，又何而去。”<br>“心应似菩提来，身如明镜出？”<br>“本来无心，哪有菩提？本来无身，哪有明镜？”<br>“若万物皆无，此心何出？”<br>“万物皆有，故万物皆无。心皆有，即心皆无”<br>“那学佛是为了这无心？”<br>“学佛不是为了什么，而是不为了什么。”</p>
+<p>By Shane</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/02/20/poem-2014-02-20-舍为/" data-id="cid5ozz36003qq04droi4l0aa" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/02/20/poem-2014-02-20-舍为/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/poem/">poem</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PRML-read-2014-02-17-ind001" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/17/PRML-read-2014-02-17-ind001/" class="article-date">
+  <time datetime="2014-02-17T02:19:37.000Z" itemprop="datePublished">Feb 17 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ml/">ml</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/17/PRML-read-2014-02-17-ind001/">PCA</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#####1. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/02/17/PRML-read-2014-02-17-ind001/" data-id="cid5ozz3j004lq04dsc8b0twz" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/02/17/PRML-read-2014-02-17-ind001/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ml/">ml</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/">study</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-programing-language-python-learning-python-4-2014-02-09-ind021" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/12/programing-language-python-learning-python-4-2014-02-09-ind021/" class="article-date">
+  <time datetime="2014-02-12T14:30:18.000Z" itemprop="datePublished">Feb 12 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/lerning-python-4/">lerning python 4</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/12/programing-language-python-learning-python-4-2014-02-09-ind021/">第二十一篇：Advanced Topics</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#####1. Unicode and Byte Strings<br>3.0与2.0一些区别。主要介绍3.0的细节。会夹杂着2.0中的重点部分。<br>通过内置的函数进行转换。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ASCII</span></span><br><span class="line">ord(<span class="string">'a'</span>)  <span class="comment"># 97</span></span><br><span class="line">hex(<span class="number">97</span>)  <span class="comment"># 0x61</span></span><br><span class="line">chr(<span class="number">97</span>)  <span class="comment"># a</span></span><br></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/12/programing-language-python-learning-python-4-2014-02-09-ind021/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/02/12/programing-language-python-learning-python-4-2014-02-09-ind021/" data-id="cid5ozz0j0008q04daeymob90" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/02/12/programing-language-python-learning-python-4-2014-02-09-ind021/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/language/">language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning-python-4/">learning python 4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/">study</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-tools-emacs-2014-02-11-ind001" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/11/tools-emacs-2014-02-11-ind001/" class="article-date">
+  <time datetime="2014-02-11T13:12:32.000Z" itemprop="datePublished">Feb 11 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/emacs/">emacs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/11/tools-emacs-2014-02-11-ind001/">Emacs之基本操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#####1. 环境基本</p>
+<ul>
+<li><font color="green"><b>打开menu</b></font> : F10 或者 menu-bar-open</li>
+<li><font color="green"><b>退出Emacs</b></font> : C-x C-c</li>
+</ul>
+<p>待续。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/02/11/tools-emacs-2014-02-11-ind001/" data-id="cid5ozz0e0001q04d33lm06a0" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/02/11/tools-emacs-2014-02-11-ind001/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emacs/">emacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-programing-language-python-learning-python-4-2014-02-09-ind020" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/10/programing-language-python-learning-python-4-2014-02-09-ind020/" class="article-date">
+  <time datetime="2014-02-10T13:51:08.000Z" itemprop="datePublished">Feb 10 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/lerning-python-4/">lerning python 4</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/10/programing-language-python-learning-python-4-2014-02-09-ind020/">第二十篇：Exception</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#####1. 常见的异常处理结构</p>
+<ul>
+<li>try/except</li>
+<li>try/finally</li>
+<li>raise</li>
+<li>assert</li>
+<li>with/as
+        
+          <p class="article-more-link">
+            <a href="/2014/02/10/programing-language-python-learning-python-4-2014-02-09-ind020/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/02/10/programing-language-python-learning-python-4-2014-02-09-ind020/" data-id="cid5ozz0m000jq04d6nh3cvg4" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/02/10/programing-language-python-learning-python-4-2014-02-09-ind020/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/language/">language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning-python-4/">learning python 4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/">study</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-gallery-2014-02-10-清晨-校园雪景" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/10/gallery-2014-02-10-清晨-校园雪景/" class="article-date">
+  <time datetime="2014-02-10T01:15:53.000Z" itemprop="datePublished">Feb 10 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/gallery/">gallery</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/10/gallery-2014-02-10-清晨-校园雪景/">清晨校园雪景</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>六点起床拍雪景咯。</p>
+<p><img src="!--￼0--&gt;/images/gallery/20140210-snow/1.jpg" alt="花"><br>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/10/gallery-2014-02-10-清晨-校园雪景/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/02/10/gallery-2014-02-10-清晨-校园雪景/" data-id="cid5ozz3g004dq04dyae4xrsu" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/02/10/gallery-2014-02-10-清晨-校园雪景/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gallery/">gallery</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Shane Wang<br>
+      <!--Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>-->
+    </div>
+  </div>
+  
+    
+    <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = '1';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>

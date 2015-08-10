@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第二篇：数值类型 | Shane</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这一篇介绍与Python有关的数值类型和概念，夹杂着一些新的其它方面的概念。
+#####1.3/4 == 0？在python中，每个数都会关联到一个类型上的，3， 4默认为整型。（python的一个好处是这些类型都不用声明，直接拿来就用。）这里3/4 == 0 可以类比c中的int类型除法。结果向下取舍，就变成了0.如果想得到一个满意的结果：3.0 / 4.0就可以了。python看到小数点，自然">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二篇：数值类型">
+<meta property="og:url" content="http://mllover.com/2014/01/02/programing-language-python-learning-python-4-2014-01-02-ind002/index.html">
+<meta property="og:site_name" content="Shane">
+<meta property="og:description" content="这一篇介绍与Python有关的数值类型和概念，夹杂着一些新的其它方面的概念。
+#####1.3/4 == 0？在python中，每个数都会关联到一个类型上的，3， 4默认为整型。（python的一个好处是这些类型都不用声明，直接拿来就用。）这里3/4 == 0 可以类比c中的int类型除法。结果向下取舍，就变成了0.如果想得到一个满意的结果：3.0 / 4.0就可以了。python看到小数点，自然">
+<meta property="og:updated_time" content="2014-01-27T10:35:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二篇：数值类型">
+<meta name="twitter:description" content="这一篇介绍与Python有关的数值类型和概念，夹杂着一些新的其它方面的概念。
+#####1.3/4 == 0？在python中，每个数都会关联到一个类型上的，3， 4默认为整型。（python的一个好处是这些类型都不用声明，直接拿来就用。）这里3/4 == 0 可以类比c中的int类型除法。结果向下取舍，就变成了0.如果想得到一个满意的结果：3.0 / 4.0就可以了。python看到小数点，自然">
+  
+    <link rel="alternative" href="/atom.xml" title="Shane" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Shane</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://mllover.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-programing-language-python-learning-python-4-2014-01-02-ind002" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/02/programing-language-python-learning-python-4-2014-01-02-ind002/" class="article-date">
+  <time datetime="2014-01-02T06:14:06.000Z" itemprop="datePublished">Jan 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/lerning-python-4/">lerning python 4</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第二篇：数值类型
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一篇介绍与Python有关的数值类型和概念，夹杂着一些新的其它方面的概念。</p>
+<p>#####1.3/4 == 0？<br>在python中，每个数都会关联到一个类型上的，3， 4默认为整型。<br>（python的一个好处是这些类型都不用声明，直接拿来就用。）<br>这里3/4 == 0 可以类比c中的int类型除法。结果向下取舍，就变成了0.<br>如果想得到一个满意的结果：<br>3.0 / 4.0就可以了。python看到小数点，自然明白这是float类型（flaot类型在python中类似于c中float/double)<br><a id="more"></a></p>
+<p>#####2.<em>* or pow()函数<br>旧版用\</em>*表示指数运算<br>新版用pow表示指数运算<br>x ** y 或 pow(x,y) 表示 x^y的值。python V2.6可以使用任意一种方式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62;&#62;&#62;2**3&#10;8&#10;&#62;&#62;&#62;pow(2,3)&#10;8</span><br></pre></td></tr></table></figure></p>
+<p>#####3.long类型<br>支持无限大的数（在内存，cpu承受能力之内），这真是太好啦。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62;&#62;&#62;32894892384*32343290432&#10;1063929058105096869888L&#10;&#20294;&#26159;,&#28014;&#28857;&#22411;&#20570;&#38500;&#27861;&#26102;&#65292;&#31934;&#24230;&#32454;&#33410;&#20250;&#20002;&#25481;&#65306;&#10;&#62;&#62;&#62;74239847324789274932747294723897492379487239472389472397423740823048230840283490238408230480238402840280482.0/42789423.0&#10;1.735004637122339e+99</span><br></pre></td></tr></table></figure></p>
+<p>#####4.更一般的大数操作<br>此时需要使用python的一个模块：decimal<br>使用方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62;&#62;&#62;d = decimal.Decimal(&#39;3.14&#39;) #&#20320;&#21487;&#20197;&#25226;d&#24403;&#25104;&#19968;&#20010;&#25968;&#65292;&#20540;&#20026;3.14&#10;&#62;&#62;&#62;d + 1&#10;Decimal(&#39;4.141&#39;)</span><br></pre></td></tr></table></figure></p>
+<p>有了这个类，何愁精度太小呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import decimal&#10;decimal.getcontext().prec = 200 #&#35774;&#32622;&#26368;&#22810;200&#20301;&#31934;&#24230;&#10;&#10;d1 = decimal.Decimal(&#39;1&#39;) #&#26377;&#27809;&#26377;&#24341;&#21495;&#26080;&#25152;&#35859;&#10;d2 = decimal.Decimal(3)&#10;&#10;print(d1 / d2)&#10;0.333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333</span><br></pre></td></tr></table></figure></p>
+<p>看看吧。和其它的高级语言一样，python默认的精度系统让人心寒：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62;&#62;&#62; 0.1 + 0.1 + 0.1 - 0.3&#10;5.551115123125783e-17</span><br></pre></td></tr></table></figure></p>
+<p>好在我们有Deciaml module:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62;&#62;&#62; from decimal import Decimal&#10;&#62;&#62;&#62; Decimal(&#39;0.1&#39;) + Decimal(&#39;0.1&#39;) + Decimal(&#39;0.1&#39;) - Decimal(&#39;0.3&#39;)&#10;Decimal(&#39;0.0&#39;)&#10;&#62;&#62;&#62; print(Decimal(&#39;0.0&#39;))&#10;0.0</span><br></pre></td></tr></table></figure></p>
+<p>现在，精度的问题已经不是问题了。</p>
+<p>#####5.分数代替小数<br>精度再大，都不能准确表示某些分数。看来要用分数模块了：fraction<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from fractions import Fraction&#10;&#10;f = Fraction(2, 3) #2/3&#10;f = f + Fraction(1, 2)&#10;print(f)&#10;7/6</span><br></pre></td></tr></table></figure></p>
+<p>这里说明一下：<br><em><br>1.&gt;&gt;&gt;  这个符号表示在IDLE中，提示输入的符号。后面设计的代码都是在eclipse里写的。所以也就省去了&gt;&gt;&gt;<br>2.这里的结果是7/6。一般最后会把结果贴上。<br>3.<code>from fractions import Fraction</code> 表示从fractions里把Fraction暴露出来，以后就不需要使用fractions.Fraction怎么长的调用了。<br>4.由于导入的模块里的变量可以被你随便修改。使用reload(xxx)函数可以重新导入这个模块，清空被修改的状态:
+</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62;&#62;&#62;import math&#10;&#62;&#62;&#62;math.pi&#10;3.141592653589793&#10;&#62;&#62;&#62;math.pi = 10&#10;&#62;&#62;&#62;math.pi&#10;10&#10;&#62;&#62;&#62;reload(math)&#10;&#62;&#62;&#62;math.pi&#10;3.141592653589793</span><br></pre></td></tr></table></figure></p>
+<p>当然了，如果小数已经产生了，怎么把它变成分数形式呢。可以这么做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62;&#62;&#62; (2.5).as_integer_ratio()&#10;(5, 2)</span><br></pre></td></tr></table></figure></p>
+<p>#####6.神奇的扩展<br>*号普遍被Python用来扩展元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62;&#62;&#62;[1&#65292;2]*2&#10;[1, 2, 1, 2]&#10;&#62;&#62;&#62;&#39;hello&#39;*2&#10;&#39;hellohello&#39;</span><br></pre></td></tr></table></figure></p>
+<p>#####7.查看type:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62;&#62;&#62;a = 10&#10;&#62;&#62;&#62;type(a)  #&#19981;&#38480;&#20110;int, &#21487;&#20197;&#26597;&#30475;&#20219;&#24847;object&#10;&#60;type &#39;int&#39;&#62;</span><br></pre></td></tr></table></figure></p>
+<p>#####8.简单的oop（object oriented programming）<br>下面是一个简单的类。看看看懂了没？没看懂直接跳过，不要紧。<br>def 是函数定义标识。<strong>int</strong>是构造函数。每个成员函数传入self，用来给成员函数操作自己变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Worker:&#10;    def __int__(self, name, pay):  #Initialize when created.&#31867;&#20284;&#20110;&#26500;&#36896;&#20989;&#25968;&#10;        self.name = name&#10;        self.pay = pay&#10;    def lastName(self):&#10;        return self.name.split()[-1]&#10;    def giveRaise(self, percent):&#10;        sefl.pay *= (1.0 + percent)&#10; &#10;bob = Worker(&#39;Bob Smith&#39;, 11223)&#10;bob.lastName()</span><br></pre></td></tr></table></figure></p>
+<p>#####9.数类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123, -24, 999999999999999&#9;&#25972;&#25968;&#10;1.23, 3.14e-2&#9;&#23567;&#25968;&#10;0177, 0x9ff, 0b1001&#9;&#20843;&#65292;&#21313;&#20845;&#65292;&#20108;&#36827;&#21046;&#65288;2.6&#65289;&#10;0o177, 0x9ff, 0b1001&#9;&#20843;&#65292;&#21313;&#20845;&#65292;&#20108;&#36827;&#21046;(3.0&#29256;)&#10;3+4j&#9;&#22797;&#25968;</span><br></pre></td></tr></table></figure></p>
+<p>注意：复数不是3+4i.在python中也可以使用Complex(real, imag)创建复数。</p>
+<p>#####10.进制转换<br>十进制到各进制的转换：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62;&#62;&#62;a = 12&#10;&#62;&#62;&#62;bin(a) #&#36716;&#20026;2&#36827;&#21046;&#10;&#62;&#62;&#62;otc(a) #&#36716;&#20026;8&#36827;&#21046;&#10;&#62;&#62;&#62;hex(a) #&#36716;&#20026;16&#36827;&#21046;&#10;``` &#10;&#22810;&#31181;&#36827;&#21046;&#24448;10&#36827;&#21046;&#36716;&#25442;&#65306;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int(‘64’) #十进制<br>int(‘100’, 8) #8进制<br>int(‘40’, 16) #16进制<br>int(‘100000’, 2) #<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#23558;&#21313;&#36827;&#21046;&#36716;&#21270;&#20026;&#20108;&#36827;&#21046;&#65292;&#20843;&#36827;&#21046;&#21644;&#21313;&#20845;&#36827;&#21046;&#30340;&#21478;&#19968;&#31181;&#26041;&#27861;&#65306;</span><br></pre></td></tr></table></figure></p>
+<p>‘{0:b}, {1:o}, {2:x}’.format(64, 64, 64)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;#####11.&#31867;&#22411;&#24378;&#21046;&#36716;&#25442;&#10;int(num) long(num)&#21644; float(num)&#25968;&#21487;&#20197;&#23558;&#25968;&#36716;&#25442;&#20026;int long float&#31867;&#22411;&#12290;&#10; &#10;#####12.&#25968;&#20540;&#36716;&#21270;&#20026;string</span><br></pre></td></tr></table></figure></p>
+<p>num = 1.0/3.0<br>repr(num)<br>str(num)<br>str(num)和repr(num)类似。但是repr会给出更多的细节。数值转化为string时，也可以格式化：<br>num = 1/ 3.0<br>0.3333333333333331<br>‘%e’ % num string格式数值<br>‘3.3333333e-001’<br>‘%4.2f’ % num #可以调整格式<br>‘0.33’<br>‘{0:4.2f}’.format(num) #2.6or3.0<br>‘0.33’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;#####13.&#22823;&#23567;&#21028;&#26029;&#10;&#21487;&#20197;&#20351;&#29992;&#26356;&#26041;&#20415;&#30340;&#26041;&#27861;&#26469;&#36827;&#34892;&#22823;&#23567;&#27604;&#36739;&#65306;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>x = 5<br>if 2 &lt; x and x &lt; 10:<br>    print(‘2&lt;x&lt;10’)</p>
+<p>#equals to:<br>x = 5<br>if 2 &lt; x &lt; 10:<br>    print(‘2&lt;x&lt;10’)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#35828;&#26126;&#65306;&#10;1.`if &#32467;&#26500;`:</span><br></pre></td></tr></table></figure></p>
+<p>if 2 &lt; 3:<br>    print(‘2<3') 2="" elif="" <="" 2.5:="" print('2<2.5')="" else:="" print('2="">=2.5’)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#36825;&#26159;&#19968;&#20010;&#32463;&#20856;&#30340;if-else-if&#32467;&#26500;&#12290;&#36825;&#37324;&#35201;&#27880;&#24847;&#65292; python&#20013;&#27809;&#26377;&#33457;&#25324;&#21495;&#26469;&#26631;&#26126;&#20989;&#25968;&#20307;&#12290;&#20351;&#29992;&#20882;&#21495;&#21644;&#32553;&#36827;&#34920;&#31034;&#12290;&#25152;&#20197;&#32553;&#36827;&#35201;&#38750;&#24120;&#23567;&#24515;&#12290;&#21516;&#19968;&#23618;&#27425;&#30340;&#20195;&#30721;&#32553;&#36827;&#35201;&#30456;&#21516;&#12290;&#21516;&#26102;&#20882;&#21495;&#19981;&#33021;&#30465;&#30053;&#12290;  &#10;&#10;2.`and or` &#31561;&#10;python&#27809;&#26377;&#20351;&#29992;c-like&#35821;&#35328;&#30340;&#38;&#38; || &#26469;&#34920;&#31034;&#19988;&#21644;&#25110;&#65292;&#32780;&#26159;&#20351;&#29992;and&#65292; or&#20851;&#38190;&#23383;&#12290;&#10; &#10;#####14 / &#25805;&#20316;&#31526;&#10;python&#26377;&#20004;&#31181;&#38500;&#27861;&#25805;&#20316;&#65306; &#10;/ &#21644; //   &#10;/ &#65306;&#34920;&#31034;&#25972;&#25968;&#30456;&#38500;&#65292;&#21521;&#19979;&#21462;&#25972;&#12290;&#23567;&#25968;&#19981;&#21462;&#25972;&#12290; &#10;//&#65306;&#21521;&#19979;&#21462;&#25972;&#12290;  &#10;&#20294;&#26159;&#22312;3.0&#31181;&#12290;/  &#22312;&#25972;&#25968;&#30456;&#38500;&#26102;&#65292;&#20063;&#19981;&#21521;&#19979;&#21462;&#25972;&#12290;  &#10;&#24403;&#28982;&#65292;&#20320;&#20063;&#21487;&#20197;&#22312;2.6&#20013;&#20351;&#29992;3.0&#36825;&#20010;&#21151;&#33021;&#65306;</span><br></pre></td></tr></table></figure></3')></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>from <strong>future</strong> import division<br>// 这种向下去整相当于math里的floor()函数<br>import math<br>math.floor(2.5)<br>2<br>math.floor(-2.5)<br>-3<br>math.trunc(2.5)<br>2<br>math.trunc(-2.5)<br>-2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;#####15. math&#10;math module&#65306;&#25968;&#23398;&#24037;&#20855;&#21253;&#12290;&#36825;&#20010;&#27169;&#22359;&#24863;&#35273;&#27809;&#20160;&#20040;&#22909;&#35828;&#30340;&#12290;&#21482;&#35201;&#26159;&#20010;&#20687;&#26679;&#30340;&#32534;&#31243;&#35821;&#35328;&#37117;&#20250;&#26377;&#36825;&#20010;&#25193;&#23637;&#21543;&#12290;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>import math<br>math.floor(2.55) #向下取整<br>math.ceil(2.55) #向上取整<br>math.trunc(2.55) #截取整数部分</p>
+<p>#题外话： round(2.55) #四舍五入<br>math.sqrt(144) #== 144 ** .5<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;#####16.random&#10;random module: &#25552;&#20379;&#38543;&#26426;&#21270;&#25805;&#20316;&#12290;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import random<br>random.random()<br>0.4454848546546546546456<br>random.randint(1, 10)<br>5<br>random.choice([‘jinjin’, ‘yiyi’])<br>‘yiyi’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;#####17.&#20877;&#27425;&#35752;&#35770;set&#10;set&#20063;&#21487;&#20197;&#36890;&#36807;&#20989;&#25968;set([1, 2, 3, 4])&#21019;&#24314;&#12290;&#21644;&#123;1&#65292; 2&#65292; 3&#65292; 4&#125;&#34920;&#36798;&#21151;&#33021;&#26159;&#19968;&#26679;&#30340;&#12290;&#10;set&#21487;&#20197;&#36890;&#36807;add&#20989;&#25968;&#21152;&#20837;&#26032;&#30340;&#20803;&#32032;&#12290;&#36890;&#36807;remove&#21024;&#38500;&#24050;&#26377;&#30340;&#20803;&#32032;&#12290;&#10;set&#21487;&#20197;&#23436;&#25104;&#19968;&#20123;&#24039;&#22937;&#30340;&#25805;&#20316;&#65306;&#10;&#22914;&#26524;&#35201;&#21024;&#38500;[1&#65292; 2&#65292; 3, 3, 2, 1, 3]&#20013;&#37325;&#22797;&#30340;&#20803;&#32032;&#65292;&#36825;&#26679;&#25805;&#20316;&#65306;</span><br></pre></td></tr></table></figure></p>
+<p>a = [1, 2, 3, 3, 2, 1, 3]<br>set(a)<br>set([1, 2, 3])<br>a = list(set(a))<br>a<br>[1, 2, 3]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seta &#62; setb &#34920;&#31034; seta&#26159;&#21542;&#20026;setb&#30340;&#29238;&#38598;&#12290;&#10; &#10;#####18.Bool&#10;python&#20013;&#65292;True/False &#20026; bool&#31867;&#22411;&#12290;&#20294;&#26159;&#23427;&#20204;&#26412;&#36136;&#19978;&#26159;1&#21644;0</span><br></pre></td></tr></table></figure></p>
+<p>True == 1<br>True<br>False == 0<br>True<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;#####19.eval&#10;&#21644;MATLAB&#19968;&#26679;&#12290;python&#25552;&#20379;&#20102;&#19968;&#20010;&#21629;&#20196;&#27169;&#25311;&#20989;&#25968;eval()&#12290;&#36825;&#20307;&#29616;&#20102;&#21160;&#24577;&#35821;&#35328;&#30340;&#29305;&#24615;&#12290;&#10;&#19979;&#38754;&#32473;&#20986;eval &#30340;&#31616;&#21333;&#29992;&#27861;&#12290;&#20063;&#32473;&#20986;&#23427;&#19982;exec&#20989;&#25968;&#30340;&#19968;&#20123;&#21306;&#21035;&#12290;</span><br></pre></td></tr></table></figure></p>
+<p>eval(‘[1, 2, 3, 4]’)<br>[1, 2, 3, 4]<br>exec(‘print(“hello”)’)<br>hello<br>eval(‘print(“hello”)’)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Traceback (most recent call last):<br>  File “<pyshell#79>“, line 1, in <module><br>    eval(‘print(“hello”)’)<br>  File “<string>“, line 1<br>    print(“hello”)<br>        ^<br>SyntaxError: invalid syntax<br>```</string></module></pyshell#79></p>
+<p>#####19够了吗？python扩展<br>尽管python提供了上述很多数值操作的方法。但是对于科学计算还是不够的。于是有很多扩展可以增强python的数值计算能力。比如NumPy(Numeric Python)。<br>NumPy将在以后介绍到。</p>
+<p>end</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2014/01/02/programing-language-python-learning-python-4-2014-01-02-ind002/" data-id="cid5ozz30003eq04d3504eapk" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2014/01/02/programing-language-python-learning-python-4-2014-01-02-ind002/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/language/">language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning-python-4/">learning python 4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/">study</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/01/03/programing-language-python-learning-python-4-2014-01-03-ind003/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第三篇：动态类型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/01/01/programing-language-python-learning-python-4-2014-01-01-ind001/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第一篇：开始Python</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shane"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Shane Wang<br>
+      <!--Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>-->
+    </div>
+  </div>
+  
+    
+    <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = '1';
+  
+  var disqus_url = 'http://mllover.com/2014/01/02/programing-language-python-learning-python-4-2014-01-02-ind002/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>

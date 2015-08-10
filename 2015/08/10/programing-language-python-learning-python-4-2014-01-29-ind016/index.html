@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Shane</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: ‘第十六篇： Modules’date: 2014-01-29 12:54:52tags:
+
+language
+python
+study
+learning python 4categories: lerning python 4
+
+
+#####1. Import, from当import时，python会自动执行import的程序。模块导入的过程：
+
+Find the module’">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shane">
+<meta property="og:url" content="http://mllover.com/2015/08/10/programing-language-python-learning-python-4-2014-01-29-ind016/index.html">
+<meta property="og:site_name" content="Shane">
+<meta property="og:description" content="title: ‘第十六篇： Modules’date: 2014-01-29 12:54:52tags:
+
+language
+python
+study
+learning python 4categories: lerning python 4
+
+
+#####1. Import, from当import时，python会自动执行import的程序。模块导入的过程：
+
+Find the module’">
+<meta property="og:updated_time" content="2014-01-30T14:53:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shane">
+<meta name="twitter:description" content="title: ‘第十六篇： Modules’date: 2014-01-29 12:54:52tags:
+
+language
+python
+study
+learning python 4categories: lerning python 4
+
+
+#####1. Import, from当import时，python会自动执行import的程序。模块导入的过程：
+
+Find the module’">
+  
+    <link rel="alternative" href="/atom.xml" title="Shane" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Shane</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://mllover.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-programing-language-python-learning-python-4-2014-01-29-ind016" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/10/programing-language-python-learning-python-4-2014-01-29-ind016/" class="article-date">
+  <time datetime="2015-08-10T08:42:20.000Z" itemprop="datePublished">Aug 10 2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: ‘第十六篇： Modules’<br>date: 2014-01-29 12:54:52<br>tags:</p>
+<ul>
+<li>language</li>
+<li>python</li>
+<li>study</li>
+<li>learning python 4<br>categories: lerning python 4</li>
+</ul>
+<hr>
+<p>#####1. Import, from<br>当import时，python会自动执行import的程序。模块导入的过程：</p>
+<ol>
+<li>Find the module’s file.</li>
+<li>Compile it to byte code.</li>
+<li>Run the module’s code to build the objects it defines.</li>
+</ol>
+<p>注意上面的过程只在第一次导入时发生。以后导入后，python仅仅在内存中寻找对应的模块。python将所有模块保存在一个表中：<code>sys.modules</code>。导入模块时，python会检查该模块是不是在其中。如果不在其中，会发生上面的3个步骤。在编译模块之前，python检查文件的时间戳。如果.pyc文件不比源文件的.py文件老，则会忽略第二步。还有一点要注意的是，import会忽略导入模块的路径名。为了区别导入时的运行行为和作为主文件运行的运行行为。可以使用<code>__name__</code> 和 <code>__main__</code> 来限定。<br><a id="more"></a></p>
+<p>#####2. 寻找路径<br>python寻找路径的过程是：</p>
+<ol>
+<li>The home directory of the program(当前目录)</li>
+<li><code>PYTHONPATH</code> directories(if set)(在windows系统下可以增加一个PYTHONPATH环境变量)</li>
+<li>Standard library directories</li>
+<li>The contents of any .pth files(if present)(可以在cite-packages下建立.pth文件。添加目录)</li>
+</ol>
+<p>第4点添加文件会比较方便。但是.pth文件要放在site-packages.这个目录相对于python的安装路径。而不是当前目录。</p>
+<p>最后，可以使用<code>sys.path</code>来查看ptyon的search path。</p>
+<p>#####3. from…*<br>这种方式在Python 3.0中只能在top level中使用。在函数里面是不能使用的。<br>from方法可以单独导出某些函数或变量。下面的两种方式是等价的。</p>
+<pre><code class="python"><span class="keyword">from</span> module <span class="keyword">import</span> name1, name2
+the same <span class="keyword">as</span>:
+
+<span class="comment">#import module</span>
+name1 = module.name1
+name2 = module.name2
+<span class="keyword">del</span> module
+</code></pre>
+<p>尽管通过from可以导入特定的函数或变量。但是用import导入模块会使得程序更加规范和易读。有时，使用import是必须的。比如下面的代码：</p>
+<pre><code class="python"><span class="keyword">from</span> M <span class="keyword">import</span> func
+<span class="keyword">from</span> N <span class="keyword">import</span> func
+func() <span class="comment">#Calls N.func</span>
+</code></pre>
+<p>如果嫌模块的变量太复杂。可以使用as关键字引入别名。<br><code>import Module as M</code><br>事实上，模块被导入后，namespaces是存放在dictionary对象中的。我们可以通过<code>__dict__</code>属性访问。</p>
+<pre><code class="python"><span class="keyword">import</span> module1 <span class="keyword">as</span> mo
+<span class="keyword">print</span> mo.__dict__.keys()
+<span class="keyword">print</span> mo.__file__ <span class="comment">#file infomation</span>
+<span class="keyword">print</span> mo.__name__ <span class="comment">#file name</span>
+
+<span class="comment">#result:</span>
+[<span class="string">'__builtins__'</span>, <span class="string">'__file__'</span>, <span class="string">'__package__'</span>, <span class="string">'x'</span>, <span class="string">'__name__'</span>, <span class="string">'__doc__'</span>]
+D:\project\python\learn\module1.pyc
+module1
+</code></pre>
+<p>#####4. reload<br>reload 现在紧紧对Python写的module有效。对于比如C语言写的module,不能reload。用from展开的变量或者函数不能使用reload恢复最新的值。</p>
+<p>#####5. module packages<br>假设我们在dir0目录。我们要访问dir0/dir1/dir2 目录下的mod.py文件。import时，需要用<code>.</code>区分目录。每个目录下必须要有<code>__init__.py</code>文件。但是目录<code>dir0</code>里面不需要使用<code>__init__</code>。下面是一个例子。</p>
+<pre><code class="python"><span class="keyword">import</span> dir1.mod
+</code></pre>
+<p>当调用目录里的模块时，python会首先执行<code>__init__</code>进行一些初始化工作。所以在init文件里面可以进行一些初始化工作。对于<code>from *</code>的导入语句，可以在init文件中通过使用<code>__all__</code>来指定哪些子模块是需要导入的。通常使用from语句来导入package里的模块。这样访问起来就会方便很多。</p>
+<p>在python2.x中，会首先搜索当前目录。也就是相对的path。而在python3.x中，要使用<code>from . dir1.dir2 import module</code>来导入模块。不然python总是会忽略相对路径。这里还要注意。上面所说的特性在3.0中仅仅适合from插入。如果是import modname. 3.0也会先搜寻相对路径。</p>
+<p><strong>还要注意的一点是：包含相对路径的import脚本不能直接运行，只能作为module被引用。原因正如手册中描述的，相对路径是按照module的路径，但如果直接运行脚本，该脚本就变成’<strong>main</strong>‘了。也就不是原来的name了。此时，相对路径不再是原来的路径了</strong></p>
+<font color="red">ValueError: Attempted relative import in non-package</font>
+
+<p><strong>这里还要注意一个问题：顶层目录(<strong>main</strong>文件所在目录)并不是一个package.也就意味着下面的调用方式是错误的。</strong></p>
+<ul>
+<li>start.py</li>
+<li>sub/module1.py</li>
+<li>module2.py<br>如果在start中import module1.py。而module1.py调用module2.py。module2.py可能这么些：<code>from .. import module2</code>。这样写会得到下面的错误</li>
+</ul>
+<p><font color="red">ValueError: Attempted relative import beyond toplevel package</font></p>
+<ul>
+<li>start.py</li>
+<li>sub/sub/module1.py</li>
+<li>sub/module2.py<br>此时运行start.py函数可以正确执行。</li>
+</ul>
+<p><strong>模块导入过程总结</strong></p>
+<ul>
+<li>简单导入。从sys.path从左到右匹配。</li>
+<li>使用from . 导入只在相对目录中找。不在sys.path中找。</li>
+</ul>
+<p>#####6. Data hiding<br>有时，需要对import的模块的某些函数和变量进行隐藏。我们可以通过：</p>
+<ol>
+<li><strong>在变量前加下滑线来避免from方式的导入。但是这对import无效</strong></li>
+<li><strong>在模块的顶层使用<code>__all__</code>关键字。</strong>此后，from * 只拷贝在all关键词中出现的对象。(同样对import是无效的)</li>
+</ol>
+<p>#####7. Enabling Future Language Features</p>
+<pre><code class="python"><span class="keyword">from</span> __future__ <span class="keyword">import</span> featurename
+</code></pre>
+<p>#####8. 自定义search path<br>程序运行后，可以修改sys.path来自定义寻址路径。这样你就可以动态地修改search地址了。比如：</p>
+<pre><code class="python"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">import</span> sys
+<span class="prompt">&gt;&gt;&gt; </span>sys.path
+[<span class="string">''</span>, <span class="string">'C:\\users'</span>, <span class="string">'C:\\Windows\\system32\\python30.zip'</span>, ...more deleted...]
+<span class="prompt">&gt;&gt;&gt; </span>sys.path.append(<span class="string">'C:\\sourcedir'</span>)         <span class="comment"># Extend module search path</span>
+<span class="prompt">&gt;&gt;&gt; </span><span class="keyword">import</span> string                            <span class="comment"># All imports search the new dir last</span>
+</code></pre>
+<p>要注意的是，这种修改只对运行中的程序有效。当程序推出后。不会被保存到PYTHONPATH中。<br>此外，动态加载可以通过<code>exec</code>来操作。使用exec的局限性是每次运行exec，都要重新编译模块。如果使用<code>__import__</code>,会使得程序更快一点。reload并不嵌套reload。</p>
+<p><code>trick</code>: 在可以在字符串前用<code>r</code>指定为路径。</p>
+<p>#####9. code执行顺序<br>top-level的代码会从上到下执行。而函数里的代码在被调用时才被执行。比如：</p>
+<pre><code class="python">func1()                           <span class="comment"># Error: "func1" not yet assigned</span>
+<span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">()</span>:</span>
+    print(func2())                <span class="comment"># Okay: "func2" looked up later</span>
+func1()                           <span class="comment"># Error: "func2" not yet assigned</span>
+<span class="function"><span class="keyword">def</span> <span class="title">func2</span><span class="params">()</span>:</span>
+    <span class="keyword">return</span> <span class="string">"Hello"</span>
+func1()                           <span class="comment"># Okay: "func1" and "func2" assigned</span>
+</code></pre>
+<p>#####10. 一些注意点</p>
+<ul>
+<li>下面的代码：<br>```python<br>#nested1.py<br>x = 99<br>def printer(): print(x)</li>
+</ul>
+<p>#nested2.py<br>from nested1 import x, printer<br>x = 88<br>printer()</p>
+<p>#result:<br>99<br>```<br>改变x，改的是local的变量。而不是导入模块的变量。所以拷贝的是名字而不是链接。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mllover.com/2015/08/10/programing-language-python-learning-python-4-2014-01-29-ind016/" data-id="cid5ozz0u0017q04dkcd8lv2y" class="article-share-link">Share</a>
+      
+        <a href="http://mllover.com/2015/08/10/programing-language-python-learning-python-4-2014-01-29-ind016/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/10/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shane"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Shane Wang<br>
+      <!--Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>-->
+    </div>
+  </div>
+  
+    
+    <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="http://weibo.com/p/1005052133429541/home?from=page_100505&mod=TAB#place" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = '1';
+  
+  var disqus_url = 'http://mllover.com/2015/08/10/programing-language-python-learning-python-4-2014-01-29-ind016/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>
